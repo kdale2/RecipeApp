@@ -9,4 +9,5 @@ Additional functionality added: <br>
 - Improved UI <br>
 - Improved error handling
 <br><br>
+View app on netlify: https://nervous-kowalevski-1fb80b.netlify.app/ <br>
 App accepts a certain list of search terms which can be found here: https://forkify-api.herokuapp.com/phrases.html
