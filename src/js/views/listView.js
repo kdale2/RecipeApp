@@ -3,7 +3,7 @@
 import { elements } from './base';
 
 
-// method to render the item
+// method to render each item/ingredient in the UI
 export const renderItem = item => {
 
     const markup = `
@@ -28,7 +28,23 @@ export const renderItem = item => {
 // method to delete the item from the UI
 export const deleteItem = id => {
 
+    console.log("Trying to delete an item from the list");
+
+    // select the proper item by ID and remove it from the html
     const item = document.querySelector(`[data-itemid="${id}"]`);
+
+
+    console.log("The item we selected is " + item);
+    console.log("The parent element is: " + item.parentElement);
     item.parentElement.removeChild(item);
 
 };
+
+
+// delete entire shopping list from the UI
+export const deleteList = () => {
+
+    //deleting all html / child nodes from the shopping list
+    elements.shopping.innerHTML = '';
+
+} 

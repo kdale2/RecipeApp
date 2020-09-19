@@ -11,6 +11,7 @@ import * as likesView from './views/likesView';
 
 import { elements, renderLoader, clearLoader } from './views/base';
 
+
 /*** global state of the app which contains:
  * - search object
  * - current recipe object
@@ -29,7 +30,7 @@ const state = {};
 const controlSearch = async () => {
 
     // Get the search query from UI - read input from user
-    const query = searchView.getInput(); 
+    const query = searchView.getInput();
 
     //if there has been a query entered, handle 
     if (query) {
@@ -56,7 +57,7 @@ const controlSearch = async () => {
             clearLoader();
             searchView.renderResults(state.search.result);
 
-        } catch(err) {
+        } catch (err) {
             alert('Error! Something went wrong with the search...');
             clearLoader();
         }
@@ -119,7 +120,7 @@ const controlRecipe = async () => {
 
         // get recipe data - retrns a promise - gtting data from API
         // need a try catch in case api call fails
-        try { 
+        try {
             await state.recipe.getRecipe();
             state.recipe.parseIngredients();
 
@@ -135,7 +136,7 @@ const controlRecipe = async () => {
             );
 
 
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             // to implement - better error handling. add message to UI, not an alert
             alert('ERROR processing recipe---');
@@ -188,12 +189,60 @@ elements.shopping.addEventListener('click', e => {
         // delete from UI
         listView.deleteItem(id);
 
-    // handle the count update
+        // handle the count update
     } else if (e.target.matches('.shopping__count-value')) {
         const val = parseFloat(e.target.value);
         state.list.updateCount(id, val);
     }
 })
+
+
+// method to delete entire shopping list when button is clicked
+elements.deleteListButton.addEventListener('click', () => {
+    state.list.deleteList();
+    listView.deleteList();
+})
+ 
+// adding new items manually - it works
+//clean this up
+elements.addItemToList.addEventListener("click", e => {
+
+    e.preventDefault();
+    if (state.list) {
+        console.log("Trying to add an item");
+        var count = document.getElementById("count").value;
+        var unit = document.getElementById("unit").value;
+        var ingred = document.getElementById("ingred").value;
+
+        console.log(state.list);
+        //this is not working - cannot read property "addItem" of undefined
+        const newItem = state.list.addItem(count, unit, ingred);
+        listView.renderItem(newItem);
+    } else {
+        state.list = new List();
+        var count = document.getElementById("count").value;
+        var unit = document.getElementById("unit").value;
+        var ingred = document.getElementById("ingred").value;
+        const newItem = state.list.addItem(count, unit, ingred);
+        listView.renderItem(newItem);
+    }
+}); 
+
+// restore shopping list on page load
+window.addEventListener('load', () => {
+    
+    state.list = new List();
+
+    // restore likes
+    state.list.readStorage();
+
+    // render all liked recipes
+    state.list.items.forEach(item => listView.renderItem(item));
+
+});  
+
+
+
 
 
 
@@ -230,7 +279,7 @@ const controlLike = () => {
         likesView.renderLike(newLike);
 
 
-    // user HAS liked the current recipe    
+        // user HAS liked the current recipe    
     } else {
 
         // remove like from the state
@@ -239,7 +288,7 @@ const controlLike = () => {
         // toggle the like button
         likesView.toggleLikeBtn(false);
 
-        
+
         // remove like from UI list
         likesView.deleteLike(currentID);
     }
@@ -249,7 +298,7 @@ const controlLike = () => {
 
 // restore liked recipes on page load
 window.addEventListener('load', () => {
-    
+
     state.likes = new Likes();
 
     // restore likes
@@ -273,20 +322,20 @@ elements.recipe.addEventListener("click", (e) => {
 
     // if decrease button, or any child element of it (*), is clicked
     if (e.target.matches(".btn-decrease, .btn-decrease *")) {
-        
+
         if (state.recipe.servings > 1) {
-        state.recipe.updateServings("dec");
-        recipeView.updateServingsIngredients(state.recipe);
+            state.recipe.updateServings("dec");
+            recipeView.updateServingsIngredients(state.recipe);
         }
 
     } else if (e.target.matches(".btn-increase, .btn-increase *")) {
-        
+
         // increase button is clicked
         state.recipe.updateServings("inc");
         recipeView.updateServingsIngredients(state.recipe);
 
     } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')) {
-       
+
         // add ingredients to shopping list
         controlList();
 

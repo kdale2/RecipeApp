@@ -71,9 +71,7 @@ export const renderRecipe = (recipe, isLiked) => {
                 <span class="recipe__info-text"> minutes</span>
             </div>
             <div class="recipe__info">
-                <svg class="recipe__info-icon">
-                    <use href="img/icons.svg#icon-man"></use>
-                </svg>
+
                 <span class="recipe__info-data recipe__info-data--people">${recipe.servings}</span>
                 <span class="recipe__info-text"> servings</span>
 
@@ -119,10 +117,10 @@ export const renderRecipe = (recipe, isLiked) => {
             <h2 class="heading-2">How to cook it</h2>
             <p class="recipe__directions-text">
                 This recipe was carefully designed and tested by
-                <span class="recipe__by">${recipe.author}</span>. Please check out directions at their website.
+                <span class="recipe__by">${recipe.author}</span>. Find the directions at the link below.
             </p>
             <a class="btn-small recipe__btn" href="${recipe.url}" target="_blank">
-                <span>Directions</span>
+                <span>Link to Recipe</span>
                 <svg class="search__icon">
                     <use href="img/icons.svg#icon-triangle-right"></use>
                 </svg>

@@ -9,17 +9,17 @@
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%; }
+  font-size: 67.5%; }
   @media only screen and (max-width: 68.75em) {
     html {
       font-size: 50%; } }
 
 body {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Maven Pro', sans-serif;
   font-weight: 400;
   line-height: 1.6;
   color: #655A56;
-  background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+  background-image: linear-gradient(to right bottom, #9293dd, #8297f4);
   background-size: cover;
   background-repeat: no-repeat;
   min-height: calc(100vh - 2 * 4vw); }
@@ -41,8 +41,14 @@ body {
       margin: 0;
       border-radius: 0; } }
 
-.btn, .btn-small, .btn-small:link, .btn-small:visited {
-  background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+.delete-list {
+  text-align: center;
+  margin: 40px;
+  width: 50%;
+}
+
+.btn, .btn-small, .btn-small:link, .btn-small:visited, .delete-list {
+  background-image: linear-gradient(to right bottom, #5770df, #8297f4);
   border-radius: 10rem;
   border: none;
   text-transform: uppercase;
@@ -59,14 +65,14 @@ body {
     margin-right: 1rem; }
 
 .btn {
-  padding: 1.3rem 3rem;
+  padding: 1rem 2.7rem;
   font-size: 1.4rem; }
   .btn svg {
     height: 2.25rem;
     width: 2.25rem;
     fill: currentColor; }
 
-.btn-small, .btn-small:link, .btn-small:visited {
+.btn-small, .btn-small:link, .btn-small:visited, .delete-list {
   font-size: 1.3rem;
   padding: 1rem 1.75rem;
   text-decoration: none; }
@@ -124,16 +130,11 @@ body {
 .heading-2 {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #F59A83;
+  color: #4530bd;
   text-transform: uppercase;
   margin-bottom: 2.5rem;
   text-align: center;
-  transform: skewY(-3deg); }
-
-.copyright {
-  color: #968B87;
-  font-size: 1.2rem;
-  margin-top: auto; }
+   }
 
 .link:link,
 .link:visited {
@@ -262,7 +263,7 @@ body {
       position: absolute;
       top: 0;
       left: 0;
-      background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+      background-image: linear-gradient(to right bottom, #a0f7a0, #8297f4);
       opacity: .4; }
     .results__fig img,
     .likes__fig img {
@@ -274,7 +275,7 @@ body {
   .results__name,
   .likes__name {
     font-size: 1.3rem;
-    color: #F59A83;
+    color: #31097a;
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: .3rem; }
@@ -317,20 +318,21 @@ body {
       position: absolute;
       top: 0;
       left: 0;
-      background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
       opacity: .6; }
   .recipe__img {
     width: 100%;
     display: block;
     height: 100%;
-    object-fit: cover; }
+    object-fit: cover;
+}
   .recipe__title {
     position: absolute;
+    
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, 20%) skewY(-6deg);
+    transform: translate(-50%, 20%);
     color: #fff;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 2.75rem;
     text-transform: uppercase;
     width: 70%;
@@ -340,7 +342,10 @@ body {
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
       padding: 1.3rem 2rem;
-      background-image: linear-gradient(to right bottom, #FBDB89, #F48982); }
+      border-radius: 5rem;
+      border: 2px solid rgb(69, 69, 150);
+
+      background-image: linear-gradient(to right bottom, #5770df, #3a56d1); }
   .recipe__details {
     display: flex;
     align-items: center;
@@ -372,7 +377,7 @@ body {
     opacity: 1;
     transform: translateY(0); }
   .recipe__love {
-    background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+    background-image: linear-gradient(to right bottom, #dab879, #8297f4);
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -395,7 +400,7 @@ body {
     padding: 4rem 5rem;
     font-size: 1.5rem;
     line-height: 1.4;
-    background-color: #F2EFEE;
+    background-color: #eee1dd;
     display: flex;
     flex-direction: column;
     align-items: center; }
@@ -490,3 +495,16 @@ body {
   .shopping__item:hover .shopping__delete {
     opacity: 1;
     visibility: visible; }
+
+    
+
+/* working on this section further */
+.submit-ingredient {
+  background-color: #eee1dd;
+  border-top: 1px solid #fff;
+  padding: 5px;
+  font-size: 20px;
+} .submit-item {
+  font-size: 15px;
+}
+

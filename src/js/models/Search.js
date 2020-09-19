@@ -7,7 +7,7 @@ export default class Search {
         this.query = query;
     }
 
-    //async functions return a promise
+    // async functions return a promise
     // getting the recipe info from the API call
     async getResults() {
         try {
